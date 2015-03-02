@@ -1,6 +1,8 @@
 html,
 body {
     height: 100%;
+     background-color: #13a7c7;
+     font-family: 'Glyphicons Halflings';
 }
 
 .wrap {
