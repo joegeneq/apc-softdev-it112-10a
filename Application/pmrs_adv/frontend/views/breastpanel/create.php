@@ -1,0 +1,21 @@
+<?php
+
+use yii\helpers\Html;
+
+
+/* @var $this yii\web\View */
+/* @var $model frontend\models\BreastPanel */
+
+$this->title = 'Create Breast Panel';
+$this->params['breadcrumbs'][] = ['label' => 'Breast Panels', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="breast-panel-create">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
+</div>
