@@ -23,7 +23,6 @@ use frontend\models\HistolgicGrading;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
 
     <?php
 		$patients=Patient::find()->all();

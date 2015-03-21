@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id, 'patient_id' => $model->patient_id, 'stages_id' => $model->stages_id, 'diagnosis_id' => $model->diagnosis_id, 'breast_panel_id' => $model->breast_panel_id, 'ki_67_id' => $model->ki_67_id, 'surgery_id' => $model->surgery_id, 'user_id' => $model->user_id, 'histolgic_grading_id' => $model->histolgic_grading_id, 'treatment_id' => $model->treatment_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'patient_id' => $model->patient_id, 'stages_id' => $model->stages_id, 'diagnosis_id' => $model->diagnosis_id, 'breast_panel_id' => $model->breast_panel_id, 'ki_67_id' => $model->ki_67_id, 'surgery_id' => $model->surgery_id, 'user_id' => $model->user_id, 'histolgic_grading_id' => $model->histolgic_grading_id, 'treatment_id' => $model->treatment_id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
