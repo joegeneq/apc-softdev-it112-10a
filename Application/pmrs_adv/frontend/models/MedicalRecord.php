@@ -56,15 +56,15 @@ class MedicalRecord extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'patient_id' => 'Patient ID',
-            'stages_id' => 'Stages ID',
-            'diagnosis_id' => 'Diagnosis ID',
-            'breast_panel_id' => 'Breast Panel ID',
-            'ki_67_id' => 'Ki 67 ID',
-            'surgery_id' => 'Surgery ID',
-            'user_id' => 'User ID',
-            'histolgic_grading_id' => 'Histolgic Grading ID',
-            'treatment_id' => 'Treatment ID',
+            'patient_id' => 'Patient',
+            'stages_id' => 'Stages',
+            'diagnosis_id' => 'Diagnosis',
+            'breast_panel_id' => 'Breast Panel',
+            'ki_67_id' => 'Ki 67',
+            'surgery_id' => 'Surgery',
+            'user_id' => 'User',
+            'histolgic_grading_id' => 'Histolgic Grading',
+            'treatment_id' => 'Treatment',
         ];
     }
 

@@ -24,6 +24,7 @@ use frontend\models\HistolgicGrading;
     <?php $form = ActiveForm::begin(); ?>
 
 
+
     <?php
 		$patients=Patient::find()->all();
 		$listData=ArrayHelper::map($patients, 'id', 'patient_lname');
