@@ -44,11 +44,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'patient_her_two_m')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'patient_k_67')->textInput(['maxlength' => 45]) ?>
+    <!-- <?= $form->field($model, 'patient_k_67')->textInput(['maxlength' => 45]) ?> --!>
+    
+    <?php echo $form->field($model, 'patient_k_67')->dropDownList(['Low' => 'Low', 'High' => 'High', 'Not Available' => 'Not Available']); ?>
 
     <?= $form->field($model, 'patient_metastic')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'patient_date')->textInput() ?>
+    
+   
+    
 
     <?= $form->field($model, 'patient_age')->textInput() ?>
 
