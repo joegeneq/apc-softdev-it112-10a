@@ -1,15 +1,15 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'Springfield Breast Care Cancer';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Welcome to</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <h2 >Patient Medical Record System</h2>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+       
     </div>
 
     <div class="body-content">
