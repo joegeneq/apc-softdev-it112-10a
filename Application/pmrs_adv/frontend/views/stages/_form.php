@@ -12,7 +12,16 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'stages')->textInput(['maxlength' => 35]) ?>
+    <!--<?= $form->field($model, 'stages')->textInput(['maxlength' => 35]) ?> --!>
+    
+    <?php echo $form->field($model, 'stages')->dropDownList(['I ' => 'I ',
+        'IIA' => 'IIA',
+        'IIB'=>'IIB',
+        'IIIA'=>'IIIA',
+        'IIIB'=>'IIIB',
+        'IIIC'=>'IIIC',
+        'IV'=>'IV']); ?>
+    
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
