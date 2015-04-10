@@ -26,7 +26,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'Springfield Breast Care Cancer',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -34,20 +34,27 @@ AppAsset::register($this);
             ]);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-				['label' => 'Patient', 'url' => ['/patient/index']],
-				['label' => 'MR', 'url' => ['/medicalrecord/index']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
+                ['label' => 'Operation', 'url' => ['/site/operations']],
+                ['label' => 'Patients', 'url' => ['/patient/index']],
+		['label' => 'Medical Records', 'url' => ['/medicalrecord/index']],
+                ['label' => 'Users', 'url' => ['/user/index']],
+				
             ];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+            if (Yii::$app->user->isGuest){
+                        $menuItems = [
+                ['label' => 'Home', 'url' => ['/site/index']],
+				
+                            ['label' => 'Login', 'url' => ['/site/login']],
+            ];
+                        
             } else {
                 $menuItems[] = [
+				
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
+              
             }
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
@@ -67,7 +74,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Springfield Breast Care Cancer <?= date('Y') ?></p>
         <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
