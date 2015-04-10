@@ -12,7 +12,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ki_67')->textInput(['maxlength' => 35]) ?>
+    <!--<?= $form->field($model, 'ki_67')->textInput(['maxlength' => 35]) ?> --!>
+     
+    <?php echo $form->field($model, 'ki_67')->dropDownList(['Low' => 'Low', 'High' => 'High', 'Not Available' => 'Not Available']); ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
