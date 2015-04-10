@@ -64,29 +64,29 @@ class Patient extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'patient_lname' => 'Patient Lname',
-            'patient_fname' => 'Patient Fname',
-            'patient_mname' => 'Patient Mname',
-            'patient_address' => 'Patient Address',
-            'patient_ref_by' => 'Patient Ref By',
-            'patient_family_history' => 'Patient Family History',
-            'patient_menarche' => 'Patient Menarche',
-            'patient_allergy' => 'Patient Allergy',
+            'patient_lname' => 'Last Name',
+            'patient_fname' => 'First Name',
+            'patient_mname' => 'Middle Name',
+            'patient_address' => 'Address',
+            'patient_ref_by' => 'Referred By',
+            'patient_family_history' => 'Family History',
+            'patient_menarche' => 'Menarche',
+            'patient_allergy' => 'Allergy',
             'patient_dx' => 'Patient Dx',
-            'patient_nodes' => 'Patient Nodes',
+            'patient_nodes' => 'Nodes',
             'patient_hgr' => 'Patient Hgr',
             'patient_ngr' => 'Patient Ngr',
-            'patient_stage' => 'Patient Stage',
+            'patient_stage' => 'Stage',
             'patient_er' => 'Patient Er',
             'patient_pr' => 'Patient Pr',
             'patient_her_two_m' => 'Patient Her Two M',
-            'patient_k_67' => 'Patient K 67',
-            'patient_metastic' => 'Patient Metastic',
-            'patient_date' => 'Patient Date',
-            'patient_age' => 'Patient Age',
-            'patient_dob' => 'Patient Dob',
-            'patient_tel' => 'Patient Tel',
-            'patient_cell_no' => 'Patient Cell No',
+            'patient_k_67' => 'K 67',
+            'patient_metastic' => 'Metastic',
+            'patient_date' => 'Date',
+            'patient_age' => 'Age',
+            'patient_dob' => 'Dob',
+            'patient_tel' => 'Tel No.',
+            'patient_cell_no' => 'Cellphone No',
         ];
     }
 
@@ -97,4 +97,13 @@ class Patient extends \yii\db\ActiveRecord
     {
         return $this->hasMany(MedicalRecord::className(), ['patient_id' => 'id']);
     }
+    
+    
+    public function getFullName()
+	{
+		return $this->patient_lname . ", ". $this->patient_fname. " ".$this->patient_mname ;
+                
+	}
 }
+
+    
