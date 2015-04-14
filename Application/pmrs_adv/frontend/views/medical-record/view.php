@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'patient_id',
             'doctor',
+            'breast_cancer_id',
             'surgery_id',
             'diagnosis_id',
             'stages_id',

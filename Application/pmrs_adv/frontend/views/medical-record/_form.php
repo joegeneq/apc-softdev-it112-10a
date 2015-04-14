@@ -12,6 +12,7 @@ use frontend\models\Ki67;
 use frontend\models\Surgery;
 use frontend\models\User;
 use frontend\models\HistolgicGrading;
+use frontend\models\BreastCancer;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\MedicalRecord */
@@ -22,7 +23,9 @@ use frontend\models\HistolgicGrading;
 
     <?php $form = ActiveForm::begin(); ?>
 
-      <?php
+  
+	
+	<?php
 		$patients=Patient::find()->all();
 		$listData=ArrayHelper::map($patients, 'id', 'patient_lname');
 		echo $form->field($model, 'patient_id')->dropDownList(
@@ -39,6 +42,13 @@ use frontend\models\HistolgicGrading;
 			$listData,['prompt'=>'Select']);
 	?>
 
+	    <?php
+		$diagnosis=BreastCancer::find()->all();
+		$listData=ArrayHelper::map($diagnosis, 'id', 'breast_cancer');
+		echo $form->field($model, 'breast_cancer_id')->dropDownList(
+			$listData,['prompt'=>'Select']);
+	?>
+	
     <?php
 		$diagnosis=Diagnosis::find()->all();
 		$listData=ArrayHelper::map($diagnosis, 'id', 'diagnosis_name');
@@ -88,9 +98,6 @@ use frontend\models\HistolgicGrading;
 			$listData,['prompt'=>'Select']);
 	?>
 
-   
-
-    
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
