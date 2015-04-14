@@ -18,7 +18,8 @@ class MedicalRecordSearch extends MedicalRecord
     public function rules()
     {
         return [
-            [['id', 'patient_id', 'stages_id', 'diagnosis_id', 'breast_panel_id', 'ki_67_id', 'surgery_id', 'user_id', 'histolgic_grading_id', 'treatment_id'], 'integer'],
+            [['id', 'patient_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
+            [['doctor'], 'safe'],
         ];
     }
 
@@ -57,15 +58,17 @@ class MedicalRecordSearch extends MedicalRecord
         $query->andFilterWhere([
             'id' => $this->id,
             'patient_id' => $this->patient_id,
-            'stages_id' => $this->stages_id,
-            'diagnosis_id' => $this->diagnosis_id,
-            'breast_panel_id' => $this->breast_panel_id,
-            'ki_67_id' => $this->ki_67_id,
             'surgery_id' => $this->surgery_id,
-            'user_id' => $this->user_id,
+            'diagnosis_id' => $this->diagnosis_id,
+            'stages_id' => $this->stages_id,
+            'breast_panel_id' => $this->breast_panel_id,
             'histolgic_grading_id' => $this->histolgic_grading_id,
+            'ki_67_id' => $this->ki_67_id,
             'treatment_id' => $this->treatment_id,
+            'user_id' => $this->user_id,
         ]);
+
+        $query->andFilterWhere(['like', 'doctor', $this->doctor]);
 
         return $dataProvider;
     }

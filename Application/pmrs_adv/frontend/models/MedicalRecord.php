@@ -9,14 +9,15 @@ use Yii;
  *
  * @property integer $id
  * @property integer $patient_id
- * @property integer $stages_id
- * @property integer $diagnosis_id
- * @property integer $breast_panel_id
- * @property integer $ki_67_id
+ * @property string $doctor
  * @property integer $surgery_id
- * @property integer $user_id
+ * @property integer $diagnosis_id
+ * @property integer $stages_id
+ * @property integer $breast_panel_id
  * @property integer $histolgic_grading_id
+ * @property integer $ki_67_id
  * @property integer $treatment_id
+ * @property integer $user_id
  *
  * @property BreastPanel $breastPanel
  * @property Diagnosis $diagnosis
@@ -44,8 +45,9 @@ class MedicalRecord extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'patient_id', 'stages_id', 'diagnosis_id', 'breast_panel_id', 'ki_67_id', 'surgery_id', 'user_id', 'histolgic_grading_id', 'treatment_id'], 'required'],
-            [['id', 'patient_id', 'stages_id', 'diagnosis_id', 'breast_panel_id', 'ki_67_id', 'surgery_id', 'user_id', 'histolgic_grading_id', 'treatment_id'], 'integer']
+            [['patient_id', 'doctor', 'user_id'], 'required'],
+            [['patient_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
+            [['doctor'], 'string', 'max' => 255]
         ];
     }
 
@@ -56,15 +58,16 @@ class MedicalRecord extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'patient_id' => 'Patient',
-            'stages_id' => 'Stages',
-            'diagnosis_id' => 'Diagnosis',
-            'breast_panel_id' => 'Breast Panel',
-            'ki_67_id' => 'Ki 67',
-            'surgery_id' => 'Surgery',
-            'user_id' => 'User',
-            'histolgic_grading_id' => 'Histolgic Grading',
-            'treatment_id' => 'Treatment',
+            'patient_id' => 'Patient ID',
+            'doctor' => 'Doctor',
+            'surgery_id' => 'Surgery ID',
+            'diagnosis_id' => 'Diagnosis ID',
+            'stages_id' => 'Stages ID',
+            'breast_panel_id' => 'Breast Panel ID',
+            'histolgic_grading_id' => 'Histolgic Grading ID',
+            'ki_67_id' => 'Ki 67 ID',
+            'treatment_id' => 'Treatment ID',
+            'user_id' => 'User ID',
         ];
     }
 
