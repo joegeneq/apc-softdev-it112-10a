@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $patient_id
  * @property string $doctor
+ * @property integer $breast_cancer_id
  * @property integer $surgery_id
  * @property integer $diagnosis_id
  * @property integer $stages_id
@@ -19,6 +20,7 @@ use Yii;
  * @property integer $treatment_id
  * @property integer $user_id
  *
+ * @property Breastcancer $breastCancer
  * @property BreastPanel $breastPanel
  * @property Diagnosis $diagnosis
  * @property HistolgicGrading $histolgicGrading
@@ -45,8 +47,8 @@ class MedicalRecord extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['patient_id', 'doctor', 'user_id'], 'required'],
-            [['patient_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
+            [['patient_id', 'doctor', 'breast_cancer_id', 'user_id'], 'required'],
+            [['patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
             [['doctor'], 'string', 'max' => 255]
         ];
     }
@@ -60,6 +62,7 @@ class MedicalRecord extends \yii\db\ActiveRecord
             'id' => 'ID',
             'patient_id' => 'Patient ID',
             'doctor' => 'Doctor',
+            'breast_cancer_id' => 'Breast Cancer ID',
             'surgery_id' => 'Surgery ID',
             'diagnosis_id' => 'Diagnosis ID',
             'stages_id' => 'Stages ID',
@@ -69,6 +72,14 @@ class MedicalRecord extends \yii\db\ActiveRecord
             'treatment_id' => 'Treatment ID',
             'user_id' => 'User ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBreastCancer()
+    {
+        return $this->hasOne(Breastcancer::className(), ['id' => 'breast_cancer_id']);
     }
 
     /**

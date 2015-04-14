@@ -18,7 +18,7 @@ class MedicalRecordSearch extends MedicalRecord
     public function rules()
     {
         return [
-            [['id', 'patient_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
+            [['id', 'patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
             [['doctor'], 'safe'],
         ];
     }
@@ -58,6 +58,7 @@ class MedicalRecordSearch extends MedicalRecord
         $query->andFilterWhere([
             'id' => $this->id,
             'patient_id' => $this->patient_id,
+            'breast_cancer_id' => $this->breast_cancer_id,
             'surgery_id' => $this->surgery_id,
             'diagnosis_id' => $this->diagnosis_id,
             'stages_id' => $this->stages_id,
