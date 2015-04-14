@@ -36,7 +36,7 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Operation', 'url' => ['/site/operations']],
                 ['label' => 'Patients', 'url' => ['/patient/index']],
-		['label' => 'Medical Records', 'url' => ['/medicalrecord/index']],
+		['label' => 'Medical Records', 'url' => ['/medical-record/index']],
                 ['label' => 'Users', 'url' => ['/user/index']],
 				
             ];
