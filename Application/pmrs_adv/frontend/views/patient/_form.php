@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datepicker\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Patient */
@@ -50,8 +51,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'patient_metastic')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'patient_date')->textInput() ?>
-    
+   <!-- <?= $form->field($model, 'patient_date')->textInput() ?>-->
+    <?= $form->field($model, 'patient_date')->widget(
+        DatePicker::className(), [
+           
+            'inline' => false,
+            'clientOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-mm-dd'
+            ]
+    ]);?>
    
     
 
