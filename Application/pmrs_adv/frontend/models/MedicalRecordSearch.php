@@ -18,8 +18,8 @@ class MedicalRecordSearch extends MedicalRecord
     public function rules()
     {
         return [
-            [['id', 'patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
-            [['doctor'], 'safe'],
+            [['id'], 'integer'],
+            [['doctor', 'patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'safe'],
         ];
     }
 
@@ -54,20 +54,26 @@ class MedicalRecordSearch extends MedicalRecord
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'patient_id' => $this->patient_id,
-            'breast_cancer_id' => $this->breast_cancer_id,
-            'surgery_id' => $this->surgery_id,
-            'diagnosis_id' => $this->diagnosis_id,
-            'stages_id' => $this->stages_id,
-            'breast_panel_id' => $this->breast_panel_id,
-            'histolgic_grading_id' => $this->histolgic_grading_id,
-            'ki_67_id' => $this->ki_67_id,
-            'treatment_id' => $this->treatment_id,
-            'user_id' => $this->user_id,
-        ]);
+		$query->joinWith('patient');
+        $query->joinWith('breastCancer');
+		$query->joinWith('surgery');
+       // $query->andFilterWhere([
+           // 'id' => $this->id,
+           // 'patient_id' => $this->patient_id,
+            //'breast_cancer_id' => $this->breast_cancer_id,
+            //'surgery_id' => $this->surgery_id,
+            //'diagnosis_id' => $this->diagnosis_id,
+            //'stages_id' => $this->stages_id,
+           // 'breast_panel_id' => $this->breast_panel_id,
+            //'histolgic_grading_id' => $this->histolgic_grading_id,
+            //'ki_67_id' => $this->ki_67_id,
+            //'treatment_id' => $this->treatment_id,
+            //'user_id' => $this->user_id,
+//]);
+		$query->andFilterWhere(['like','patient.patient_lname', $this->patient_id])
+		
+              ->andFilterWhere(['like','breastCancer.breast_cancer', $this->breast_cancer_id])
+			  ->andFilterWhere(['like','surgery.surgery_name', $this->surgery_id]);
 
         $query->andFilterWhere(['like', 'doctor', $this->doctor]);
 

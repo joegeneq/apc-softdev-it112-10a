@@ -36,6 +36,7 @@ class MedicalRecord extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+	 
     public static function tableName()
     {
         return 'medical_record';
@@ -60,17 +61,18 @@ class MedicalRecord extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'patient_id' => 'Patient ID',
+            'patient_id' => 'Patient Name',
             'doctor' => 'Doctor',
-            'breast_cancer_id' => 'Breast Cancer ID',
-            'surgery_id' => 'Surgery ID',
-            'diagnosis_id' => 'Diagnosis ID',
+            'breast_cancer_id' => 'Breast Cancer ',
+            'surgery_id' => 'Surgery ',
+            'diagnosis_id' => 'Diagnosis ',
             'stages_id' => 'Stages ID',
-            'breast_panel_id' => 'Breast Panel ID',
-            'histolgic_grading_id' => 'Histolgic Grading ID',
-            'ki_67_id' => 'Ki 67 ID',
-            'treatment_id' => 'Treatment ID',
-            'user_id' => 'User ID',
+            'breast_panel_id' => 'Breast Panel ',
+            'histolgic_grading_id' => 'Histolgic Grading ',
+            'ki_67_id' => 'Ki 67 ',
+            'treatment_id' => 'Treatment ',
+            'user_id' => 'User ',
+			
         ];
     }
 
