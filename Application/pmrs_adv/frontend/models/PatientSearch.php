@@ -19,7 +19,7 @@ class PatientSearch extends Patient
     {
         return [
             [['id', 'patient_age'], 'integer'],
-            [['patient_lname', 'patient_fname', 'patient_mname', 'patient_address', 'patient_ref_by', 'patient_family_history', 'patient_menarche', 'patient_allergy', 'patient_dx', 'patient_nodes', 'patient_hgr', 'patient_ngr', 'patient_stage', 'patient_er', 'patient_pr', 'patient_her_two_m', 'patient_k_67', 'patient_metastic', 'patient_date', 'patient_dob', 'patient_tel', 'patient_cell_no'], 'safe'],
+            [['patient_lname', 'patient_fname', 'patient_mname', 'patient_address',  'patient_family_history', 'patient_menarche', 'patient_allergy', 'patient_dx', 'patient_nodes', 'patient_hgr', 'patient_ngr', 'patient_stage', 'patient_er', 'patient_pr', 'patient_her_two_m', 'patient_k_67', 'patient_metastic', 'patient_date', 'patient_dob', 'patient_tel', 'patient_cell_no'], 'safe'],
         ];
     }
 
@@ -65,7 +65,6 @@ class PatientSearch extends Patient
             ->andFilterWhere(['like', 'patient_fname', $this->patient_fname])
             ->andFilterWhere(['like', 'patient_mname', $this->patient_mname])
             ->andFilterWhere(['like', 'patient_address', $this->patient_address])
-            ->andFilterWhere(['like', 'patient_ref_by', $this->patient_ref_by])
             ->andFilterWhere(['like', 'patient_family_history', $this->patient_family_history])
             ->andFilterWhere(['like', 'patient_menarche', $this->patient_menarche])
             ->andFilterWhere(['like', 'patient_allergy', $this->patient_allergy])
