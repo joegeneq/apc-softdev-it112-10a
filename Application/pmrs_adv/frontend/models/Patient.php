@@ -12,9 +12,12 @@ use Yii;
  * @property string $patient_fname
  * @property string $patient_mname
  * @property string $patient_address
- * @property string $patient_ref_by
  * @property string $patient_family_history
  * @property string $patient_menarche
+ * @property string $patient_history
+ * @property string $patient_g
+ * @property string $patient_p
+ * @property string $patient_lmp
  * @property string $patient_allergy
  * @property string $patient_dx
  * @property string $patient_nodes
@@ -32,7 +35,9 @@ use Yii;
  * @property string $patient_tel
  * @property string $patient_cell_no
  *
+ * @property History[] $histories
  * @property MedicalRecord[] $medicalRecords
+ * @property SceduleDetails[] $sceduleDetails
  */
 class Patient extends \yii\db\ActiveRecord
 {
@@ -50,10 +55,11 @@ class Patient extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['patient_lname', 'patient_fname', 'patient_mname', 'patient_address', 'patient_ref_by', 'patient_family_history', 'patient_menarche', 'patient_allergy', 'patient_dx', 'patient_nodes', 'patient_hgr', 'patient_ngr', 'patient_stage', 'patient_er', 'patient_pr', 'patient_her_two_m', 'patient_k_67', 'patient_metastic', 'patient_date', 'patient_age', 'patient_dob', 'patient_tel', 'patient_cell_no'], 'required'],
+            [['patient_lname', 'patient_fname', 'patient_mname', 'patient_address', 'patient_family_history', 'patient_menarche', 'patient_history', 'patient_g', 'patient_p', 'patient_lmp', 'patient_allergy', 'patient_dx', 'patient_nodes', 'patient_hgr', 'patient_ngr', 'patient_stage', 'patient_er', 'patient_pr', 'patient_her_two_m', 'patient_k_67', 'patient_metastic', 'patient_date', 'patient_age', 'patient_dob', 'patient_tel', 'patient_cell_no'], 'required'],
             [['patient_date'], 'safe'],
             [['patient_age'], 'integer'],
-            [['patient_lname', 'patient_fname', 'patient_mname', 'patient_address', 'patient_ref_by', 'patient_family_history', 'patient_menarche', 'patient_allergy', 'patient_dx', 'patient_nodes', 'patient_hgr', 'patient_ngr', 'patient_stage', 'patient_er', 'patient_pr', 'patient_her_two_m', 'patient_k_67', 'patient_metastic', 'patient_dob', 'patient_tel', 'patient_cell_no'], 'string', 'max' => 45]
+            [['patient_lname', 'patient_fname', 'patient_mname', 'patient_address', 'patient_family_history', 'patient_menarche', 'patient_allergy', 'patient_dx', 'patient_nodes', 'patient_hgr', 'patient_ngr', 'patient_stage', 'patient_er', 'patient_pr', 'patient_her_two_m', 'patient_k_67', 'patient_metastic', 'patient_dob', 'patient_tel', 'patient_cell_no'], 'string', 'max' => 45],
+            [['patient_history', 'patient_g', 'patient_p', 'patient_lmp'], 'string', 'max' => 255]
         ];
     }
 
@@ -63,14 +69,13 @@ class Patient extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'patient_lname' => 'Last Name',
+             'patient_lname' => 'Last Name',
             'patient_fname' => 'First Name',
             'patient_mname' => 'Middle Name',
             'patient_address' => 'Address',
-            'patient_ref_by' => 'Referred By',
             'patient_family_history' => 'Family History',
             'patient_menarche' => 'Menarche',
+            'patient_history' => 'Patient History',
             'patient_allergy' => 'Allergy',
             'patient_dx' => 'Patient Dx',
             'patient_nodes' => 'Nodes',
@@ -87,7 +92,18 @@ class Patient extends \yii\db\ActiveRecord
             'patient_dob' => 'Dob',
             'patient_tel' => 'Tel No.',
             'patient_cell_no' => 'Cellphone No',
+             'patient_g' => 'G',
+            'patient_p' => 'P',
+            'patient_lmp' => 'Lmp',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHistories()
+    {
+        return $this->hasMany(History::className(), ['patient_id' => 'id']);
     }
 
     /**
@@ -97,7 +113,14 @@ class Patient extends \yii\db\ActiveRecord
     {
         return $this->hasMany(MedicalRecord::className(), ['patient_id' => 'id']);
     }
-    
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSceduleDetails()
+    {
+        return $this->hasMany(SceduleDetails::className(), ['patient_id' => 'id']);
+    }
     
     public function getFullName()
 	{
@@ -105,5 +128,3 @@ class Patient extends \yii\db\ActiveRecord
                 
 	}
 }
-
-    
