@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\MedicalRecord */
+/* @var $model frontend\models\MedicalRecoraaad */
 
 $this->title = 'Update Medical Record: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Medical Records', 'url' => ['index']];

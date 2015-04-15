@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\MedicalRecord */
 
-$this->title = $model->id;
+$this->title = $model->patient->fullName;
 $this->params['breadcrumbs'][] = ['label' => 'Medical Records', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,17 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'patient_id',
+            'patient.patient_lname',
             'doctor',
-            'breast_cancer_id',
-            'surgery_id',
-            'diagnosis_id',
-            'stages_id',
-            'breast_panel_id',
-            'histolgic_grading_id',
-            'ki_67_id',
-            'treatment_id',
-            'user_id',
+            'breastCancer.breast_cancer',
+            'surgery.surgery_name',
+            'diagnosis.diagnosis_name',
+            'stages.stages',
+            'breastPanel.breast_panel_name',
+            'histolgicGrading.histolgic_grade',
+            'ki67.ki_67',
+            'treatment.treatment_name',
+            'user.username',
         ],
     ]) ?>
 

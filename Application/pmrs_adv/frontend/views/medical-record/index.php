@@ -5,7 +5,7 @@ use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\MedicalRecordSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider yii\data\ActiveDataProvider aaa*/
 
 $this->title = 'Medical Records';
 $this->params['breadcrumbs'][] = $this->title;
@@ -25,11 +25,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'patient_id',
+           // 'id',
             'doctor',
-            'breast_cancer_id',
-            'surgery_id',
+			 [
+                'attribute' => 'patient_id',
+                'value' => 'patient.patient_lname' 
+            ],
+
+			[
+                'attribute' => 'breast_cancer_id',
+                'value' => 'breastCancer.breast_cancer' 
+            ],
+			[
+                'attribute' => 'surgery_id',
+                'value' => 'surgery.surgery_name' 
+            ],
             // 'diagnosis_id',
             // 'stages_id',
             // 'breast_panel_id',

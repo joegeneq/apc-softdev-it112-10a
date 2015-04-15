@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'surgery_id') ?>
 
-    <?php // echo $form->field($model, 'diagnosis_id') ?>
+    <?php // echo $form->field($model, 'diagnosis_id'a) ?>
 
     <?php // echo $form->field($model, 'stages_id') ?>
 
