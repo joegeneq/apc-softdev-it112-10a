@@ -50,7 +50,7 @@ class MedicalRecord extends \yii\db\ActiveRecord
         return [
             [['patient_id', 'doctor', 'breast_cancer_id', 'user_id'], 'required'],
             [['patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
-            [['doctor'], 'string', 'max' => 255]
+            [['doctor','result'], 'string', 'max' => 255]
         ];
     }
 
@@ -72,6 +72,7 @@ class MedicalRecord extends \yii\db\ActiveRecord
             'ki_67_id' => 'Ki 67 ',
             'treatment_id' => 'Treatment ',
             'user_id' => 'User ',
+             'result' => 'Result',
 			
         ];
     }
