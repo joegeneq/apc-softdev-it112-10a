@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2015 at 11:31 PM
+-- Generation Time: Apr 15, 2015 at 05:23 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -168,15 +168,16 @@ CREATE TABLE IF NOT EXISTS `medical_record` (
   KEY `fk_medical_record_histolgic_grading1_idx` (`histolgic_grading_id`),
   KEY `fk_medical_record_treatment1_idx` (`treatment_id`),
   KEY `fk_medical_record_breast_cancer1_idx` (`breast_cancer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `medical_record`
 --
 
 INSERT INTO `medical_record` (`id`, `patient_id`, `doctor`, `breast_cancer_id`, `surgery_id`, `diagnosis_id`, `stages_id`, `breast_panel_id`, `histolgic_grading_id`, `ki_67_id`, `treatment_id`, `user_id`) VALUES
-(1, 1, '', 1, 3, 4, 3, 2, 1, 1, 6, 1),
-(2, 1, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+(1, 1, 'Dr.Franz', 1, 3, 4, 3, 2, 1, 1, 6, 1),
+(2, 1, '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 1, 'asa', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -231,6 +232,30 @@ CREATE TABLE IF NOT EXISTS `patient` (
 INSERT INTO `patient` (`id`, `patient_lname`, `patient_fname`, `patient_mname`, `patient_address`, `patient_ref_by`, `patient_family_history`, `patient_menarche`, `patient_allergy`, `patient_dx`, `patient_nodes`, `patient_hgr`, `patient_ngr`, `patient_stage`, `patient_er`, `patient_pr`, `patient_her_two_m`, `patient_k_67`, `patient_metastic`, `patient_date`, `patient_age`, `patient_dob`, `patient_tel`, `patient_cell_no`) VALUES
 (1, 'Cacao', 'Joy', 'Alfaro', 'Pque City', 'Aeya', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aaaa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', '0000-00-00', 20, 'aa', 'aa', '09175382739'),
 (2, 'Chua', 'Anton', 'Coco', 'hk', 'hkh', 'fy', 'osa', 'vh', 'v', 'j', 'o', 'bkbk', 'fyufu', 'bkiho', 'vufy', 'nihno', 'cftc', 'nono', '0000-00-00', 49, 'nln', 'gdcg', '09175382916');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scedule_details`
+--
+
+CREATE TABLE IF NOT EXISTS `scedule_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_name` varchar(255) NOT NULL,
+  `type_of_event` varchar(255) NOT NULL,
+  `event_startdate` date NOT NULL,
+  `event_enddate` date NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `patient_id` (`patient_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `scedule_details`
+--
+
+INSERT INTO `scedule_details` (`id`, `event_name`, `type_of_event`, `event_startdate`, `event_enddate`, `patient_id`) VALUES
+(1, 'asdasd', 'Treatment', '2015-04-14', '2015-04-15', 1);
 
 -- --------------------------------------------------------
 
@@ -360,6 +385,12 @@ ALTER TABLE `medical_record`
   ADD CONSTRAINT `fk_medical_record_surgery1` FOREIGN KEY (`surgery_id`) REFERENCES `surgery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_medical_record_treatment1` FOREIGN KEY (`treatment_id`) REFERENCES `treatment` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_medical_record_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `scedule_details`
+--
+ALTER TABLE `scedule_details`
+  ADD CONSTRAINT `patient_id` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
