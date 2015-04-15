@@ -32,11 +32,20 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'patient_lname',
 //            'patient_fname',
 //            'patient_mname',
+            
+             'patient_date',
             'FullName',
+            'patient_age',
+             'patient_dob',
             'patient_address',
-            'patient_ref_by',
+            'patient_g',
+            'patient_p',
+            'patient_lmp',
+            'patient_tel',
+            'patient_cell_no',
             'patient_family_history',
             'patient_menarche',
+           'patient_history',
             'patient_allergy',
             'patient_dx',
             'patient_nodes',
@@ -48,11 +57,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'patient_her_two_m',
             'patient_k_67',
             'patient_metastic',
-            'patient_date',
-            'patient_age',
-            'patient_dob',
-            'patient_tel',
-            'patient_cell_no',
+           
+            
+           
+            
+            
         ],
     ]) ?>
 

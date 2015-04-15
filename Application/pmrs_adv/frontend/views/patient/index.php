@@ -17,6 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Patient', ['create'], ['class' => 'btn btn-success']) ?>
+    
+        <?= Html::a('Create History', ['history/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -30,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'patient_fname',
             'patient_mname',
             'patient_address',
-            // 'patient_ref_by',
+          
             // 'patient_family_history',
             // 'patient_menarche',
             // 'patient_allergy',

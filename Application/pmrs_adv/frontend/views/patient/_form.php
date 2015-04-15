@@ -21,11 +21,18 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'patient_address')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'patient_ref_by')->textInput(['maxlength' => 45]) ?>
+  
 
     <?= $form->field($model, 'patient_family_history')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'patient_menarche')->textInput(['maxlength' => 45]) ?>
+    <?= $form->field($model, 'patient_history')->textInput(['maxlength' => 45]) ?>
+    
+     <?= $form->field($model, 'patient_g')->textInput(['maxlength' => 255]) ?>
+
+    <?= $form->field($model, 'patient_p')->textInput(['maxlength' => 255]) ?>
+
+    <?= $form->field($model, 'patient_lmp')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'patient_allergy')->textInput(['maxlength' => 45]) ?>
 
