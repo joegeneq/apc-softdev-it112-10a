@@ -120,6 +120,11 @@ class SiteController extends Controller
     {
         return $this->render('operations');
     }
+    
+    public function actionCalendar()
+    {
+        return $this->render('calendar');
+    }
 
     public function actionSignup()
     {
