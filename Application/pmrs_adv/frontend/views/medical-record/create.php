@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\MedicalRecordaaa */
+/* @var $model frontend\models\MedicalRecord */
 
 $this->title = 'Create Medical Record';
 $this->params['breadcrumbs'][] = ['label' => 'Medical Records', 'url' => ['index']];

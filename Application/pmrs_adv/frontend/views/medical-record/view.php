@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'histolgicGrading.histolgic_grade',
             'ki67.ki_67',
             'treatment.treatment_name',
+            'result',
             'user.username',
         ],
     ]) ?>

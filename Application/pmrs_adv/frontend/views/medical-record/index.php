@@ -5,7 +5,7 @@ use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\MedicalRecordSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider aaa*/
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Medical Records';
 $this->params['breadcrumbs'][] = $this->title;

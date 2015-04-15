@@ -91,6 +91,9 @@ use frontend\models\BreastCancer;
 			$listData,['prompt'=>'Select']);
 	?>
 
+    <?= $form->field($model, 'result')->textInput(['maxlength' => 255]) ?>
+    
+    
    <?php
 		$user=User::find()->all();
 		$listData=ArrayHelper::map($user, 'id', 'username');
