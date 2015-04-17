@@ -28,24 +28,39 @@ $this->params['breadcrumbs'][] = $this->title;
                     <img src="images/icon/surgery.gif" height="150px" width="150px">
                 </a></p>
             </div>
-			<div class="col-lg-2">
+			
+			
+            </div>
+			
+			
+			
+   
+    <div class="row">
+        
+        <div class="col-lg-2">
 				<p><a href="?r=stages">
                     <img src="images/icon/stages.gif" height="150px" width="150px">
                 </a></p>
             </div>
-			<div class="col-lg-2">
+        
+        <div class="col-lg-2">
 				<p><a href="?r=ki67">
                     <img src="images/icon/ki67.gif" height="150px" width="150px">
                 </a></p>
-            </div>
-			
-			
-			</div>
-   
+                </div>
+                
+        <div class="col-lg-2">
+				<p><a href="?r=doctor">
+                    <img src="images/icon/doctor.gif" height="150px" width="150px">
+                </a></p>
+        
+    
+        </div>
+    </div>
     
     
     
-    
+    </div>
    
     
     
