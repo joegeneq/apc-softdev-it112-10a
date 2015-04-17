@@ -19,7 +19,7 @@ class MedicalRecordSearch extends MedicalRecord
     {
         return [
             [['id'], 'integer'],
-            [['doctor', 'patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'safe'],
+            [['result', 'patient_id', 'doctor_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id'], 'safe'],
         ];
     }
 
@@ -54,28 +54,45 @@ class MedicalRecordSearch extends MedicalRecord
             // $query->where('0=1');
             return $dataProvider;
         }
-		$query->joinWith('patient');
-        $query->joinWith('breastCancer');
-		$query->joinWith('surgery');
-       // $query->andFilterWhere([
-           // 'id' => $this->id,
-           // 'patient_id' => $this->patient_id,
-            //'breast_cancer_id' => $this->breast_cancer_id,
-            //'surgery_id' => $this->surgery_id,
-            //'diagnosis_id' => $this->diagnosis_id,
-            //'stages_id' => $this->stages_id,
-           // 'breast_panel_id' => $this->breast_panel_id,
-            //'histolgic_grading_id' => $this->histolgic_grading_id,
-            //'ki_67_id' => $this->ki_67_id,
-            //'treatment_id' => $this->treatment_id,
-            //'user_id' => $this->user_id,
-//]);
-		$query->andFilterWhere(['like','patient.patient_lname', $this->patient_id])
-		
-              ->andFilterWhere(['like','breastCancer.breast_cancer', $this->breast_cancer_id])
-			  ->andFilterWhere(['like','surgery.surgery_name', $this->surgery_id]);
 
-        $query->andFilterWhere(['like', 'doctor', $this->doctor]);
+        
+        $query->joinWith('patient');
+        $query->joinWith('doctor');
+        $query->joinWith('breastCancer');
+        $query->joinWith('surgery');
+        $query->joinWith('diagnosis');
+        $query->joinWith('stages');
+        $query->joinWith('breastPanel');
+        $query->joinWith('histolgicGrading');
+        $query->joinWith('ki67');
+        $query->joinWith('treatment');
+      //  $query->andFilterWhere([
+//            'id' => $this->id,
+//            'patient_id' => $this->patient_id,
+//            'doctor_id' => $this->doctor_id,
+//            'breast_cancer_id' => $this->breast_cancer_id,
+//            'surgery_id' => $this->surgery_id,
+//            'diagnosis_id' => $this->diagnosis_id,
+//            'stages_id' => $this->stages_id,
+//            'breast_panel_id' => $this->breast_panel_id,
+//            'histolgic_grading_id' => $this->histolgic_grading_id,
+//            'ki_67_id' => $this->ki_67_id,
+//            'treatment_id' => $this->treatment_id,
+            
+      //  ]);
+        $query->andFilterWhere(['like','patient.patient_lname', $this->patient_id])
+               ->andFilterWhere(['like','doctor.doctor_name', $this->doctor_id])
+               ->andFilterWhere(['like','breastCancer.breast_cancer', $this->breast_cancer_id])
+                ->andFilterWhere(['like','surgery.surgery_name', $this->surgery_id])
+                ->andFilterWhere(['like','diagnosis.diagnosis_name', $this->diagnosis_id])
+                ->andFilterWhere(['like','stages.stages', $this->surgery_id])
+                ->andFilterWhere(['like','breastPanel.breast_panel_name', $this->breast_panel_id])
+                ->andFilterWhere(['like','histolgic_grading.histolgic_grade', $this->histolgic_grading_id])
+                ->andFilterWhere(['like','ki_67.ki_67', $this->ki_67_id])
+                ->andFilterWhere(['like','treatment.treatment_name', $this->treatment_id])
+                ;
+
+        $query->andFilterWhere(['like', 'result', $this->result]);
 
         return $dataProvider;
     }

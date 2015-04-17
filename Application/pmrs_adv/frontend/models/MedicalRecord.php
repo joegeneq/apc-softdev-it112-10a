@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $patient_id
- * @property string $doctor
+ * @property integer $doctor_id
  * @property integer $breast_cancer_id
  * @property integer $surgery_id
  * @property integer $diagnosis_id
@@ -18,39 +18,48 @@ use Yii;
  * @property integer $histolgic_grading_id
  * @property integer $ki_67_id
  * @property integer $treatment_id
- * @property integer $user_id
+ * @property string $result
  *
  * @property Breastcancer $breastCancer
  * @property BreastPanel $breastPanel
  * @property Diagnosis $diagnosis
+ * @property Doctor $doctor
  * @property HistolgicGrading $histolgicGrading
  * @property Ki67 $ki67
  * @property Patient $patient
  * @property Stages $stages
  * @property Surgery $surgery
  * @property Treatment $treatment
- * @property User $user
  */
 class MedicalRecord extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
-	 
     public static function tableName()
     {
         return 'medical_record';
     }
-
+    public $file;
+    public $file2;
+    public $file3;
+    public $file4;
+    public $file5;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['patient_id', 'doctor', 'breast_cancer_id', 'user_id'], 'required'],
-            [['patient_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id', 'user_id'], 'integer'],
-            [['doctor','result'], 'string', 'max' => 255]
+            [['patient_id', 'doctor_id', 'breast_cancer_id'], 'required'],
+            
+            [['patient_id', 'doctor_id', 'breast_cancer_id', 'surgery_id', 'diagnosis_id', 'stages_id', 'breast_panel_id', 'histolgic_grading_id', 'ki_67_id', 'treatment_id'], 'integer'],
+            [['result','mammogram','ultrasound','ct_scan','bone_scan','lab_rep'], 'string', 'max' => 255],
+            [['file'],'file'],
+            [['file2'],'file'],
+            [['file3'],'file'],
+            [['file4'],'file'],
+            [['file5'],'file'],
         ];
     }
 
@@ -62,18 +71,21 @@ class MedicalRecord extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'patient_id' => 'Patient Name',
-            'doctor' => 'Doctor',
-            'breast_cancer_id' => 'Breast Cancer ',
+            'doctor_id' => "Doctor's Name",
+            'breast_cancer_id' => 'Breast Cancer' ,
             'surgery_id' => 'Surgery ',
             'diagnosis_id' => 'Diagnosis ',
-            'stages_id' => 'Stages ID',
+            'stages_id' => 'Stages ',
             'breast_panel_id' => 'Breast Panel ',
             'histolgic_grading_id' => 'Histolgic Grading ',
             'ki_67_id' => 'Ki 67 ',
             'treatment_id' => 'Treatment ',
-            'user_id' => 'User ',
-             'result' => 'Result',
-			
+            'result' => 'Result',
+             'file' => 'Mammogram',
+            'file2' => 'Ultrasound',
+            'file3' => 'CT Scan',
+            'file4' => 'Bone Scan',
+            'file5' => 'Laboratory Reports',
         ];
     }
 
@@ -99,6 +111,14 @@ class MedicalRecord extends \yii\db\ActiveRecord
     public function getDiagnosis()
     {
         return $this->hasOne(Diagnosis::className(), ['id' => 'diagnosis_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDoctor()
+    {
+        return $this->hasOne(Doctor::className(), ['id' => 'doctor_id']);
     }
 
     /**
@@ -147,13 +167,5 @@ class MedicalRecord extends \yii\db\ActiveRecord
     public function getTreatment()
     {
         return $this->hasOne(Treatment::className(), ['id' => 'treatment_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }
