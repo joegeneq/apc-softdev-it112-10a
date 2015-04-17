@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Patient', ['create'], ['class' => 'btn btn-success']) ?>
     
         <?= Html::a('Create History', ['history/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('View All History', ['history/index'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+        //    'id',
             'patient_lname',
             'patient_fname',
             'patient_mname',

@@ -1,12 +1,38 @@
+<script type="text/javascript">
+<!--//
+function sizeFrame(frameId) {
+
+var F = document.getElementById(frameId);
+if(F.contentDocument) {
+F.height = F.contentDocument.documentElement.scrollHeight+30; //FF 3.0.11, Opera 9.63, and Chrome
+} else {
+
+
+
+F.height = F.contentWindow.document.body.scrollHeight+30; //IE6, IE7 and Chrome
+
+}
+
+}
+
+// window.onload=sizeFrame; 
+
+//-->
+</script>
+
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+//use yii\widgets\DetailView;
+use kartik\detail\DetailView;
+use common\models\UserMain;
+use common\models\ServiceList;
+
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Patient */
 
-$this->title = $model->id;
+$this->title = $model->fullName;
 $this->params['breadcrumbs'][] = ['label' => 'Patients', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -23,16 +49,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Create History', ['history/createwithid', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Medical Record', ['medical-record/createwithid', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-//            'patient_lname',
-//            'patient_fname',
-//            'patient_mname',
-            
+    
+   
+    
+    
+    
+     <?php 
+        $attributes = [
+            [
+            'group'=>true,
+            'label'=>'Patient Information',
+            'rowOptions'=>['class'=>'info'],
+            //'groupOptions'=>['class'=>'text-center']
+            ],
+
              'patient_date',
             'FullName',
             'patient_age',
@@ -57,12 +91,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'patient_her_two_m',
             'patient_k_67',
             'patient_metastic',
-           
             
-           
-            
-            
-        ],
-    ]) ?>
+            [
+                'group'=>true,
+                'label'=>'History',
+                'rowOptions'=>['class'=>'info'],
+                //'groupOptions'=>['class'=>'text-center']
+            ],
+        ]
+    ?>
+    
+    <?php
+        echo DetailView::widget([
+        'model'=>$model,
+        'condensed'=>true,
+        'hover'=>true,
+        'mode'=>DetailView::MODE_VIEW,
+        'panel'=>false,
+        'attributes'=> $attributes,
+        ]);
+    ?>
+   
+    
 
 </div>
