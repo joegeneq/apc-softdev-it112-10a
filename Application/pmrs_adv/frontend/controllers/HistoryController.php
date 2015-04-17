@@ -52,6 +52,13 @@ class HistoryController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    
+    public function actionView2($id)
+    {
+        return $this->render('view2', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
     /**
      * Creates a new History model.
@@ -66,6 +73,20 @@ class HistoryController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+    
+     public function actionCreatewithid()
+    {
+         // $model = $this->findModel($id);
+        $model = new History();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['patient/view', 'id' => $model->id]);
+        } else {
+            return $this->render('createwithid', [
                 'model' => $model,
             ]);
         }
