@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 /* @var $this yii\web\View */
 /* @var $model frontend\models\MedicalRecord */
 
@@ -28,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'patient.patient_lname',
-            'doctor',
+           // 'id',
+            'patient.fullName',
+            'doctor.doctor_name',
             'breastCancer.breast_cancer',
             'surgery.surgery_name',
             'diagnosis.diagnosis_name',
@@ -40,8 +41,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'ki67.ki_67',
             'treatment.treatment_name',
             'result',
-            'user.username',
+           // 'mammogram',
+             ['value' =>Html::a(str_replace('web/images/', "", $model->mammogram),''.$model->mammogram), 'attribute' => 'mammogram', 'format' => 'raw'],
+            ['value' =>Html::a(str_replace('web/images/', "", $model->ultrasound),''.$model->ultrasound), 'attribute' => 'ultrasound', 'format' => 'raw'],
+             ['value' =>Html::a(str_replace('web/images/', "", $model->ct_scan),''.$model->ct_scan), 'attribute' => 'ct_scan', 'format' => 'raw'],
+             ['value' =>Html::a(str_replace('web/images/', "", $model->bone_scan),''.$model->bone_scan), 'attribute' => 'bone_scan', 'format' => 'raw'],
+             ['value' =>Html::a(str_replace('web/images/', "", $model->lab_rep),''.$model->lab_rep), 'attribute' => 'lab_rep', 'format' => 'raw'],
+            
         ],
     ]) ?>
+    
+   
+    
 
 </div>
