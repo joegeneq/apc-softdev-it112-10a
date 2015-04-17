@@ -18,8 +18,8 @@ class HistorySearch extends History
     public function rules()
     {
         return [
-            [['id', 'patient_id'], 'integer'],
-            [['dates', 'surgery', 'treatment', 'recurrence_area', 'response'], 'safe'],
+            [['id'], 'integer'],
+            [['dates', 'surgery', 'treatment', 'recurrence_area', 'response', 'patient_id'], 'safe'],
         ];
     }
 
@@ -55,16 +55,18 @@ class HistorySearch extends History
             return $dataProvider;
         }
 
+           $query->joinWith('patient');
         $query->andFilterWhere([
             'id' => $this->id,
             'dates' => $this->dates,
-            'patient_id' => $this->patient_id,
+          //  'patient_id' => $this->patient_id,
         ]);
 
         $query->andFilterWhere(['like', 'surgery', $this->surgery])
             ->andFilterWhere(['like', 'treatment', $this->treatment])
             ->andFilterWhere(['like', 'recurrence_area', $this->recurrence_area])
-            ->andFilterWhere(['like', 'response', $this->response]);
+            ->andFilterWhere(['like', 'response', $this->response])
+            ->andFilterWhere(['like','patient.patient_lname', $this->patient_id]);
 
         return $dataProvider;
     }
