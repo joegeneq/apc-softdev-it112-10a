@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'patient_id') ?>
 
-    <?= $form->field($model, 'doctor') ?>
+    <?= $form->field($model, 'doctor_id') ?>
 
     <?= $form->field($model, 'breast_cancer_id') ?>
 
@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'treatment_id') ?>
 
-    <?php // echo $form->field($model, 'user_id') ?>
+    <?php // echo $form->field($model, 'result') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

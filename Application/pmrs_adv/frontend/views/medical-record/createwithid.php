@@ -22,15 +22,16 @@ use frontend\models\BreastCancer;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-  
+  <?= $form->field($model, 'patient_id')->hiddenInput(['value'=>Yii::$app->request->get('id')])->label("") ?>
 	
-	<?php
+	<!--<?php
 		$patients=Patient::find()->all();
 		$listData=ArrayHelper::map($patients, 'id', 'fullName');
 		echo $form->field($model, 'patient_id')->dropDownList(
 			$listData,['prompt'=>'Select']);
-	?>
+	?> -->
 
+    
 
     <?php
 		$doctor=  frontend\models\Doctor::find()->all();
@@ -94,13 +95,6 @@ use frontend\models\BreastCancer;
 		echo $form->field($model, 'treatment_id')->dropDownList(
 			$listData,['prompt'=>'Select']);
 	?>
-    
-     <?= $form->field($model, 'file')->fileInput(); ?>
-    
-      <?= $form->field($model, 'file2')->fileInput(); ?>
-      <?= $form->field($model, 'file3')->fileInput(); ?>
-      <?= $form->field($model, 'file4')->fileInput(); ?>
-      <?= $form->field($model, 'file5')->fileInput(); ?>    
 
     <?= $form->field($model, 'result')->textInput(['maxlength' => 255]) ?>
     
