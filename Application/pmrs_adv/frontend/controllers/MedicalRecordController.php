@@ -8,6 +8,7 @@ use frontend\models\MedicalRecordSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * MedicalRecordController implements the CRUD actions for MedicalRecord model.
@@ -63,9 +64,51 @@ class MedicalRecordController extends Controller
         $model = new MedicalRecord();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+              $model->file = UploadedFile::getInstance($model,'file');
+              $model->file2 = UploadedFile::getInstance($model,'file2');
+              $model->file3 = UploadedFile::getInstance($model,'file3');
+              $model->file4 = UploadedFile::getInstance($model,'file4');
+              $model->file5 = UploadedFile::getInstance($model,'file5');
+              
+              
+              if($model->file != null){
+                    $fileName = $model->file->name;
+                    $fileName2 = $model->file2->name;
+                    $fileName3 = $model->file3->name;
+                    $fileName4 = $model->file4->name;
+                    $fileName5 = $model->file5->name;
+                    
+                    $model->file->saveAs('images/'. $fileName);
+                      $model->file2->saveAs('images/'. $fileName2);
+                        $model->file3->saveAs('images/'. $fileName3);
+                          $model->file4->saveAs('images/'. $fileName4);
+                            $model->file5->saveAs('images/'. $fileName5);
+                          
+                    $model->mammogram = 'images/'. $fileName;
+                     $model->ultrasound = 'images/'. $fileName2;
+                      $model->ct_scan = 'images/'. $fileName3;
+                       $model->bone_scan = 'images/'. $fileName4;
+                        $model->lab_rep = 'images/'. $fileName5;
+                       
+                }
+                    $model->save();
+                    
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+    
+    public function actionCreatewithid()
+    {
+        $model = new MedicalRecord();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['patient/view', 'id' => $model->id]);
+        } else {
+            return $this->render('createwithid', [
                 'model' => $model,
             ]);
         }
